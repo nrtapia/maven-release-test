@@ -2,6 +2,6 @@ package com.finametrica;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Start development..");
+        System.out.println("Start development now.");
     }
 }
