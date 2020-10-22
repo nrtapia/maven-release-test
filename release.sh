@@ -1,11 +1,11 @@
 #!/bin/bash
 
-releaseVersion="$1"
-devVersion="$2"
+releaseVersion=$1
+devVersion=$2
 
 echo "Change project to new version: ${releaseVersion}"
 
-mvn -N versions:update-child-modules versions:set -DgroupId=com.morningstar -DartifactId=finametrica-api -DnewVersion=$releaseVersion -DnextSnapshot=false
+mvn -N versions:set -DgroupId=com.morningstar -DartifactId=finametrica-api -DnewVersion=$releaseVersion -DnextSnapshot=false
 mvn versions:commit
 
 projectVersion=$(mvn org.apache.maven.plugins:maven-help-plugin:2.2:evaluate -Dexpression=project.version|grep -Ev '(^\[|Download\w+:)')
@@ -32,3 +32,4 @@ git checkout master
 git add .
 git commit -m "New development release from Jenkins"
 git push -f origin master
+
